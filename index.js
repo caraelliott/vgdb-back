@@ -7,6 +7,7 @@ const app = express();
 const connection = require("./connection");
 const { registerStrategy, loginStrategy, verifyStrategy } = require("./middleware/auth");
 const User = require("./models/user");
+const Game = require("./models/game");
 const userRouter = require("./routes/user");
 
 app.use(express.json());
