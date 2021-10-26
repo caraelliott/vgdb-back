@@ -24,7 +24,7 @@ module.exports = connection.define("Game",
         allowNull: false
     },
 
-   console: {
+    console: {
     type: DataTypes.STRING,
     allowNull: false
     },
