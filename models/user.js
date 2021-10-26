@@ -2,6 +2,7 @@ const { DataTypes } = require("sequelize");
 const connection = require("../connection");
 
 module.exports = connection.define("User",
+
     {
         id: {
             primaryKey: true,
@@ -24,3 +25,4 @@ module.exports = connection.define("User",
         indexes: [{ unique: true, fields: ["id"] }]
 
     });
+
