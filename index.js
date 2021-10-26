@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config;
 
 const express = require("express");
 const passport = require("passport");
@@ -7,6 +7,7 @@ const app = express();
 const connection = require("./connection");
 const { registerStrategy, loginStrategy, verifyStrategy } = require("./middleware/auth");
 const User = require("./models/user");
+const Game = require("./models/game");
 const userRouter = require("./routes/user");
 
 app.use(express.json());
@@ -17,9 +18,10 @@ passport.use("login", loginStrategy);
 passport.use(verifyStrategy);
 
 app.use("/users", userRouter);
+app.use("/users", gameRouter);
 
 app.listen(process.env.HTTP_PORT, async () => {
     connection.authenticate();
-    await User.sync({ alter: true });
-    console.log("App online");
+    await User.sync({alter: true});
+    console.log("App Online");
 });
