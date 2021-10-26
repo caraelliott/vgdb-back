@@ -4,32 +4,38 @@ const connection = require("../connection");
 module.exports = connection.define("Game",
 {
     id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
 
     name: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
 
+    passwordHash: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    
+
     year: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
 
    console: {
-    type: DataType.STRING,
+    type: DataTypes.STRING,
     allowNull: false
     },
 
     genre: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
 
     publisher: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
 },
