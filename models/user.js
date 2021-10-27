@@ -4,11 +4,12 @@ const connection = require("../connection");
 module.exports = connection.define("User",
 
     {
-        id: {
-            primaryKey: true,
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
+        // id: {
+        //     primaryKey: true,
+        //     type: DataTypes.INTEGER,
+        //     autoIncrement: true,
+        //     allowNull: false
+        // },
 
         name: {
             type: DataTypes.STRING,
@@ -22,7 +23,8 @@ module.exports = connection.define("User",
     },
 
     {
-        indexes: [{ unique: true, fields: ["id"] }]
+        indexes: [{ unique: true, fields: ["name"] }]
 
-    });
+    }
+);
 
