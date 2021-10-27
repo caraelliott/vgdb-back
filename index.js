@@ -23,5 +23,6 @@ app.use("/users", userRouter);
 app.listen(process.env.HTTP_PORT, async () => {
     connection.authenticate();
     await User.sync({ alter: true });
+    await Game.sync({ alter: true });
     console.log("App Online");
 });
