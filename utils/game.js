@@ -5,7 +5,7 @@ const Game = require("../models/game");
 //  All games
 const allGames = async () => await Game.findAll({});
 const addGame = async (game) => await Game.create(game);
-const deleteAllGames = async () => await Game.destroy({ truncater: true });
+const deleteAllGames = async () => await Game.destroy({ truncate: true });
 
 // One Game
 const deleteGame = async (id) => await Game.destroy({ where: { id } });
