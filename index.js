@@ -9,6 +9,7 @@ const { registerStrategy, loginStrategy, verifyStrategy } = require("./middlewar
 const User = require("./models/user");
 const Game = require("./models/game");
 const userRouter = require("./routes/user");
+const gameRouter = require("./routes/game")
 
 app.use(express.json());
 app.use(passport.initialize());
@@ -18,7 +19,7 @@ passport.use("login", loginStrategy);
 passport.use(verifyStrategy);
 
 app.use("/users", userRouter);
-// app.use("/games", gameRouter);
+app.use("/games", gameRouter);
 
 app.listen(process.env.HTTP_PORT, async () => {
     connection.authenticate();
