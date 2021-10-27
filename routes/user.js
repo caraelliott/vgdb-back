@@ -27,7 +27,7 @@ const login = async (req, res, next) => {
                         return next(error);
                     } else {
                         const userData = { id: user.id, name: user.name };
-                        const data = { user, token: jwt.sign({ user: userData }, process, env.SECRET_KEY) };
+                        const data = { user, token: jwt.sign({ user: userData }, process.env.SECRET_KEY) };
                         res.status(200).json(data);
                     }
                 };
