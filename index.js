@@ -1,4 +1,4 @@
-require("dotenv").config;
+require("dotenv").config();
 
 const express = require("express");
 const passport = require("passport");
@@ -18,10 +18,10 @@ passport.use("login", loginStrategy);
 passport.use(verifyStrategy);
 
 app.use("/users", userRouter);
-app.use("/users", gameRouter);
+// app.use("/games", gameRouter);
 
 app.listen(process.env.HTTP_PORT, async () => {
     connection.authenticate();
-    await User.sync({alter: true});
+    await User.sync({ alter: true });
     console.log("App Online");
 });
