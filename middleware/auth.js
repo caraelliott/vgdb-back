@@ -4,15 +4,15 @@ const JWTStrategy = require("passport-jwt").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/user");
 
-const register = async (email, password, next) => {
+const register = async (name, password, next) => {
     try {
-        if (!email || !password) {
+        if (!name || !password) {
             throw new Error("Please provide all user info")
         }
         const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS));
         const passwordHash = await bcrypt.hash(password, salt);
         try {
-            const user = await User.create({ email, passwordHash });
+            const user = await User.create({ name, passwordHash });
             next(null, user);
         } catch (error) {
             next(error, {});
@@ -22,9 +22,9 @@ const register = async (email, password, next) => {
     }
 };
 
-const login = async (email, password, next) => {
+const login = async (name, password, next) => {
     try {
-        const user = await User.findOne({ where: { email } });
+        const user = await User.findOne({ where: { name } });
         if (!user) {
             return next(null, null, { msg: "Incorrect Username" })
         }
@@ -48,8 +48,8 @@ const verifyStrategy = new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromUrlQueryParameter("secret token")
 }, verify);
 
-const registerStrategy = new LocalStrategy({ usernameField: "email", passwordField: "password" }, register);
-const loginStrategy = new LocalStrategy({ usernameField: "email", passwordFiels: "password" }, login);
+const registerStrategy = new LocalStrategy({ usernameField: "name", passwordField: "password" }, register);
+const loginStrategy = new LocalStrategy({ usernameField: "name", passwordField: "password" }, login);
 
 module.exports = {
     verifyStrategy,
