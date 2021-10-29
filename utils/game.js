@@ -14,9 +14,9 @@ const oneGame = async (id) => {
     data = await Game.findByPk(id);
     return await Game.findOne({ where: { id } });
 };
-const editGame = async (name, id) => {
+const editGame = async (name, year, console, genre, publisher, id) => {
     const findGame = await Game.findByPk(id);
-    return await Game.update({ name: name || findGame.name, console: console || findGame.console, genre: genre || findGame.genre, publisher: publisher || findGame.publisher })
+    return await Game.update({ name: name || findGame.name, year: year || findGame.year, console: console || findGame.console, genre: genre || findGame.genre, publisher: publisher || findGame.publisher }, { where: { id } });
 };
 
 module.exports = {
