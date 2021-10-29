@@ -15,6 +15,10 @@ module.exports = connection.define("User",
             type: DataTypes.STRING,
             allowNull: false
         },
+        // email: {
+        //     type: DataTypes.STRING,
+        //     allownull: false
+        // },
 
         passwordHash: {
             type: DataTypes.STRING,
