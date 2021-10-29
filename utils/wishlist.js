@@ -10,9 +10,9 @@ const oneWish = async (id) => {
     data = await Wishlist.findByPk(id);
     return await Wishlist.findOne({ where: { id } });
 };
-const editWish = async (name, id) => {
-    const findWish = await Wish.findByPk(id);
-    return await Wish.update({ name: name || findWish.name, console: console || findWish.console, genre: genre || findWish.genre, publisher: publisher || findWish.publisher })
+const editWish = async (name, year, console, genre, publisher, id) => {
+    const findWish = await Wishlist.findByPk(id);
+    return await Wishlist.update({ name: name || findWish.name, year: year || findWish.year, console: console || findWish.console, genre: genre || findWish.genre, publisher: publisher || findWish.publisher }, { where: { id } });
 };
 
 module.exports = {

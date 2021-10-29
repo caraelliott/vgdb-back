@@ -14,6 +14,7 @@ const register = async (name, password, next) => {
         const passwordHash = await bcrypt.hash(password, salt);
         try {
             const user = await User.create({ name, passwordHash });
+            console.log(user)
             next(null, user);
         } catch (error) {
             console.log(error)
