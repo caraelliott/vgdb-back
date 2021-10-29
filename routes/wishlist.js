@@ -9,8 +9,6 @@ router.delete("/", async (req, res) => res.status(200).json({ msg: "Deleted all 
 router.get("/:id", async (req, res) => res.status(200).json({ msg: "One Wish", data: await oneWish(req.params.id, req.body) }));
 router.put("/:id", async (req, res) => res.status(201).json({ msg: "Edit Wish", data: await editWish(req.body.name, req.body.year, req.body.console, req.body.genre, req.body.publisher, req.params.id) }))
 
-
-
 router.delete("/:id", async (req, res) => {
     deleteWish(req.params.id);
     res.status(200).json({ msg: "Deleted one Wish", data: await deleteWish(req.params.id) })
